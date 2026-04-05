@@ -1,26 +1,53 @@
-(function renderExperimentLinks() {
-  const container = document.getElementById('experiment-links');
+(function initializeSite() {
+  const yearTarget = document.getElementById('current-year');
+  if (yearTarget) {
+    yearTarget.textContent = new Date().getFullYear();
+  }
+
+  renderLiveExperimentLink();
+})();
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function renderLiveExperimentLink() {
+  const container = document.getElementById('live-experiment-link');
   if (!container) {
     return;
   }
 
   const config = window.HAO_ZHAO_SITE_CONFIG || {};
-  const links = Array.isArray(config.experimentLinks) ? config.experimentLinks : [];
+  const liveUrl = typeof config.liveExperimentUrl === 'string' ? config.liveExperimentUrl.trim() : '';
+  const label = typeof config.liveExperimentLabel === 'string' && config.liveExperimentLabel.trim()
+    ? config.liveExperimentLabel.trim()
+    : 'Open Student Login';
+  const note = typeof config.liveExperimentNote === 'string' && config.liveExperimentNote.trim()
+    ? config.liveExperimentNote.trim()
+    : 'The live classroom login link will appear here when a session is open.';
 
-  if (!links.length) {
-    container.innerHTML = '<p class="muted-note">No experiment links are configured yet.</p>';
+  if (!liveUrl) {
+    container.innerHTML = `
+      <div class="live-status">
+        <span class="paper-badge">No live session posted</span>
+        <p>${escapeHtml(note)}</p>
+      </div>
+    `;
     return;
   }
 
-  container.innerHTML = links
-    .map(
-      (link) => `
-        <article class="link-card">
-          <h3>${link.title}</h3>
-          <p>${link.description || ''}</p>
-          <a class="button" href="${link.href}">Open Session</a>
-        </article>
-      `
-    )
-    .join('');
-})();
+  container.innerHTML = `
+    <div class="live-status">
+      <span class="paper-badge">Live now</span>
+      <p>${escapeHtml(note)}</p>
+      <div class="paper-actions">
+        <a class="button" href="${escapeHtml(liveUrl)}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>
+      </div>
+    </div>
+  `;
+}

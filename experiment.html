@@ -3,52 +3,155 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hao Zhao | Experiment</title>
+    <title>Hao Zhao | Experiments</title>
+    <meta
+      name="description"
+      content="Classroom experiment access and instructions for Hao Zhao's DCA market design experiments."
+    />
     <link rel="stylesheet" href="./assets/site.css" />
   </head>
   <body>
-    <div class="site-shell">
-      <header class="subhero">
-        <nav class="top-nav">
-          <a class="brand" href="./index.html">Hao Zhao</a>
-          <div class="nav-links">
-            <a href="./index.html">Main</a>
-            <a href="./research.html">Research</a>
-            <a href="./experiment.html" aria-current="page">Experiment</a>
-          </div>
+    <div class="page-shell">
+      <header class="top-nav">
+        <a class="brand-lockup" href="./index.html">
+          <span class="brand-name">Hao Zhao</span>
+          <span class="brand-subtitle">Environmental and Experimental Economics</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="./index.html#about">About</a>
+          <a href="./research.html">Research</a>
+          <a href="./experiment.html" aria-current="page">Experiments</a>
+          <a class="nav-button" href="./assets/files/Hao_Zhao_CV.pdf" target="_blank" rel="noreferrer"
+            >CV</a
+          >
         </nav>
-        <div class="hero-copy compact">
-          <p class="eyebrow">Classroom Experiments</p>
-          <h1>Experiment Access</h1>
-          <p class="lead">
-            Scheduled classroom experiments are run from the local lab server. Students should use the
-            current session link provided by the instructor in class.
-          </p>
-        </div>
       </header>
 
-      <main class="stack">
-        <section class="panel">
-          <h2>Current Sessions</h2>
-          <p class="muted-note">
-            Before publishing this page, update <code>personal-site/assets/config.js</code> with the current
-            classroom session links generated from the admin console.
-          </p>
-          <div id="experiment-links" class="link-grid"></div>
+      <main class="stack-layout">
+        <section class="subhero-grid">
+          <article class="hero-panel hero-copy">
+            <p class="eyebrow">Classroom Experiments</p>
+            <h1 class="hero-title">DCA experiments and student access</h1>
+            <p class="hero-lead">
+              The current experiment program compares three trading institutions in token reallocation
+              environments: a uniform-price consignment auction, a continuous double auction, and a
+              two-sided consignment auction with a clinching mechanism.
+            </p>
+          </article>
+          <aside class="hero-panel sidebar-note">
+            <span class="detail-label">Student access</span>
+            <p>
+              Live classroom links are posted here on experiment days. Students should open the current
+              session link, log in with their subject ID and passcode, complete the introduction and quiz,
+              and then wait for the session to begin.
+            </p>
+          </aside>
         </section>
 
-        <section class="panel">
-          <h2>For Participants</h2>
-          <p>
-            In a scheduled lab session, click the current session link above. The login page should open
-            with your session code already filled in. Then enter your subject ID and passcode from the
-            instructor.
-          </p>
-          <p>
-            These links only work when you are connected to the same local network as the classroom server.
-          </p>
+        <section class="section-block">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Current experiment</p>
+              <h2>DCA Experiments</h2>
+            </div>
+          </div>
+          <article class="feature-panel">
+            <div class="feature-copy">
+              <span class="paper-badge">Live classroom study</span>
+              <p>
+                Participants receive an initial endowment, work through instructions and a quiz, and then
+                trade through repeated rounds in a controlled laboratory session. The design lets us compare
+                allocation, prices, and strategic behavior across institutions.
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <section class="section-block">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Treatments</p>
+              <h2>Three market institutions</h2>
+            </div>
+          </div>
+          <div class="card-grid experiment-grid">
+            <article class="info-card">
+              <span class="paper-badge">Treatment 1</span>
+              <h3>Uniform-price consignment auction</h3>
+              <p>
+                Subjects first surrender their endowment to the mechanism. Tokens are then redistributed in
+                an ascending-bid consignment auction with a uniform clearing price.
+              </p>
+            </article>
+            <article class="info-card">
+              <span class="paper-badge">Treatment 2</span>
+              <h3>Continuous double auction</h3>
+              <p>
+                Buyers and sellers can post bids and asks continuously, and they can also accept existing
+                quotes, as in a standard stock-market style trading environment.
+              </p>
+            </article>
+            <article class="info-card">
+              <span class="paper-badge">Treatment 3</span>
+              <h3>Two-sided clinching mechanism</h3>
+              <p>
+                This treatment implements the project&apos;s own two-sided consignment auction with clinching,
+                allowing us to compare it directly against the two benchmark institutions.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">How a session works</p>
+              <h2>Student flow</h2>
+            </div>
+          </div>
+          <div class="step-grid">
+            <article class="step-card">
+              <span class="step-number">1</span>
+              <h3>Login</h3>
+              <p>Enter the current session with the subject ID and passcode provided in the classroom.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">2</span>
+              <h3>Introduction</h3>
+              <p>Read the experiment instructions before any trading round begins.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">3</span>
+              <h3>Quiz</h3>
+              <p>Complete the comprehension quiz. The session proceeds after active participants finish.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">4</span>
+              <h3>Trading rounds</h3>
+              <p>Participate in repeated market rounds under the assigned treatment.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-number">5</span>
+              <h3>Data collection</h3>
+              <p>The system records actions, trades, and outcomes for export after the session.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Student entry</p>
+              <h2>Current classroom link</h2>
+            </div>
+          </div>
+          <div id="live-experiment-link" class="live-access-card"></div>
         </section>
       </main>
+
+      <footer class="site-footer">
+        <p><span id="current-year"></span> Hao Zhao. Hosted on GitHub Pages.</p>
+      </footer>
     </div>
 
     <script src="./assets/config.js"></script>
