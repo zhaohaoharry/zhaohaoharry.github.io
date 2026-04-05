@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hao Zhao | Experiment</title>
+    <link rel="stylesheet" href="./assets/site.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="subhero">
+        <nav class="top-nav">
+          <a class="brand" href="./index.html">Hao Zhao</a>
+          <div class="nav-links">
+            <a href="./index.html">Main</a>
+            <a href="./research.html">Research</a>
+            <a href="./experiment.html" aria-current="page">Experiment</a>
+          </div>
+        </nav>
+        <div class="hero-copy compact">
+          <p class="eyebrow">Classroom Experiments</p>
+          <h1>Experiment Access</h1>
+          <p class="lead">
+            Scheduled classroom experiments are run from the local lab server. Students should use the
+            current session link provided by the instructor in class.
+          </p>
+        </div>
+      </header>
+
+      <main class="stack">
+        <section class="panel">
+          <h2>Current Sessions</h2>
+          <p class="muted-note">
+            Before publishing this page, update <code>personal-site/assets/config.js</code> with the current
+            classroom session links generated from the admin console.
+          </p>
+          <div id="experiment-links" class="link-grid"></div>
+        </section>
+
+        <section class="panel">
+          <h2>For Participants</h2>
+          <p>
+            In a scheduled lab session, click the current session link above. The login page should open
+            with your session code already filled in. Then enter your subject ID and passcode from the
+            instructor.
+          </p>
+          <p>
+            These links only work when you are connected to the same local network as the classroom server.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script src="./assets/config.js"></script>
+    <script src="./assets/site.js"></script>
+  </body>
+</html>
