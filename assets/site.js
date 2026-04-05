@@ -1,53 +1,44 @@
-(function initializeSite() {
-  const yearTarget = document.getElementById('current-year');
-  if (yearTarget) {
-    yearTarget.textContent = new Date().getFullYear();
-  }
+(function renderExperiments() {
+    const container = document.getElementById('experiment-list');
+    if (!container) {
+        return;
+    }
 
-  renderLiveExperimentLink();
+    const config = window.HAO_ZHAO_SITE_CONFIG || {};
+    const experiments = Array.isArray(config.experiments) ? config.experiments : [];
+
+    if (!experiments.length) {
+        container.innerHTML = '<p class="empty-note">No experiment is currently posted.</p>';
+        return;
+    }
+
+    container.innerHTML = experiments.map((experiment) => `
+        <div class="experiment-item">
+            <div class="experiment-id">${escapeHtml(experiment.id || '')}</div>
+            <div class="experiment-title">${escapeHtml(experiment.title || '')}</div>
+            ${renderExperimentLink(experiment)}
+        </div>
+    `).join('');
 })();
 
-function escapeHtml(value) {
-  return String(value)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+function renderExperimentLink(experiment) {
+    const url = typeof experiment.url === 'string' ? experiment.url.trim() : '';
+    if (!url) {
+        return '<span class="experiment-link disabled">Not posted</span>';
+    }
+
+    return `<a class="experiment-link" href="${escapeAttribute(url)}" target="_blank" rel="noreferrer">Open</a>`;
 }
 
-function renderLiveExperimentLink() {
-  const container = document.getElementById('live-experiment-link');
-  if (!container) {
-    return;
-  }
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
 
-  const config = window.HAO_ZHAO_SITE_CONFIG || {};
-  const liveUrl = typeof config.liveExperimentUrl === 'string' ? config.liveExperimentUrl.trim() : '';
-  const label = typeof config.liveExperimentLabel === 'string' && config.liveExperimentLabel.trim()
-    ? config.liveExperimentLabel.trim()
-    : 'Open Student Login';
-  const note = typeof config.liveExperimentNote === 'string' && config.liveExperimentNote.trim()
-    ? config.liveExperimentNote.trim()
-    : 'The live classroom login link will appear here when a session is open.';
-
-  if (!liveUrl) {
-    container.innerHTML = `
-      <div class="live-status">
-        <span class="paper-badge">No live session posted</span>
-        <p>${escapeHtml(note)}</p>
-      </div>
-    `;
-    return;
-  }
-
-  container.innerHTML = `
-    <div class="live-status">
-      <span class="paper-badge">Live now</span>
-      <p>${escapeHtml(note)}</p>
-      <div class="paper-actions">
-        <a class="button" href="${escapeHtml(liveUrl)}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>
-      </div>
-    </div>
-  `;
+function escapeAttribute(value) {
+    return escapeHtml(value);
 }
